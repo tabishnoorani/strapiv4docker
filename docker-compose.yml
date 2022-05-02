@@ -26,9 +26,9 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.strapi.entryPoints: https
-      traefik.http.services.strapi.loadbalancer.server.port: 3000
-    ports:
-      - "1337:1337"
+      traefik.http.services.strapi.loadbalancer.server.port: 1337
+    # ports:
+    #   - "1337:1337"
     networks:
       - strapi
       - services
