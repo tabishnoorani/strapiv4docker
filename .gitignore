@@ -118,3 +118,8 @@ build
 #########
 
 data/
+.tmp/
+.cache/
+.git/
+build/
+node_modules/
