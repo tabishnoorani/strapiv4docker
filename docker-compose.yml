@@ -23,10 +23,15 @@ services:
       - ./package.json:/opt/package.json
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
+    labels:
+      traefik.enable: true
+      traefik.http.routers.strapi.entryPoints: https
+      traefik.http.services.strapi.loadbalancer.server.port: 3000
     ports:
       - "1337:1337"
     networks:
       - strapi
+      - services
     depends_on:
       - postgresDB
 
@@ -50,3 +55,6 @@ networks:
   strapi:
     name: Strapi
     driver: bridge
+  services:
+    driver: bridge
+    external: true
